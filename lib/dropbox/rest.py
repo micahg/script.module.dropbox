@@ -150,7 +150,8 @@ def json_loadb(data):
 
 class RESTClientObject(object):
     def __init__(self, max_reusable_connections=8, mock_urlopen=None):
-        TRUSTED_CERT_FILE = xbmc.translatePath(xbmcaddon.Addon().getAddonInfo('path')) + '/resources/lib/dropbox/trusted-certs.crt'
+        drpbx = xbmcaddon.Addon('script.module.dropbox')
+        TRUSTED_CERT_FILE = xbmc.translatePath(drpbx.getAddonInfo('path')) + '/lib/dropbox/trusted-certs.crt'
 
         """
         Parameters
