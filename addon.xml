@@ -8,8 +8,8 @@
     <import addon="script.module.requests" version="2.3.0"/>
     <import addon="script.module.qrcode" version="5.2"/> <!-- For QR Code display for Dropbox API authentication -->    
   </requires>
-  <extension point="xbmc.python.script" library="authenticate.py"> <!-- entry to start the authentification script from the settings dialog of other addons -->
-    <provides> </provides> <!-- Addon should not shown anywhere -->
+  <extension point="xbmc.python.library" library="authenticate.py"> <!-- entry to start the authentification script from the settings dialog of other addons -->
+    <provides> </provides> <!-- Addon should not be shown anywhere -->
   </extension>
   <extension point="xbmc.python.module" library="lib" /> <!-- entry to import this in other addons -->
   <extension point="xbmc.addon.metadata">
