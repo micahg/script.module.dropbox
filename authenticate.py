@@ -27,9 +27,6 @@ import qrcode
 import resources.utils as utils
 
 
-#get actioncodes from https://github.com/xbmc/xbmc/blob/master/xbmc/guilib/Key.h
-ACTION_PREVIOUS_MENU = 10
-
 # parse input arguments
 if len(sys.argv) == 5:#
     ADDON_TARGET_ID = sys.argv[1] # id of the calling addon
@@ -52,9 +49,10 @@ class MyClass(xbmcgui.WindowDialog):
     # save window resolution to arrange the text fields an QR code
     screenx = self.getWidth()
     screeny = self.getHeight()
-
+    utils.log('Screen resolution: %dx%d' % (screenx, screeny), xbmc.LOGDEBUG)
     # Show Dialog with Dropbox Authorization URL
 
+    res_qr_code = [0,0] # resolution of the QR-code image.
     # Show QR-Code Dropbox Authorization URL (source code from qr-code.py from service.linuxwhatelse.notify)
     if PIL_AVAILABLE:
         tmp_dir = os.path.join(utils.data_dir()) # tmp_dir has to exist
@@ -67,24 +65,25 @@ class MyClass(xbmcgui.WindowDialog):
         img.save(tmp_file)
         # Show the QR-Code in Kodi
         # http://www.programcreek.com/python/example/84322/xbmcgui.getCurrentWindowId
-        image = xbmcgui.ControlImage(100, 100, screeny/2, screeny/2, tmp_file)
+        utils.log('Add control image with %dx%d at (%d,%d)' % (screeny/2, screeny/2, 100, 100), xbmc.LOGDEBUG)
+        res_qr_code = [screeny/4, screeny/4] # TODO: the image is displayed bigger than the desired size. Find out why.
+        image = xbmcgui.ControlImage(100, 100, res_qr_code[0], res_qr_code[1], tmp_file)
         self.addControl(image)
     else:
         # The PIL module isn't available so we inform the user about it
         utils.showNotification(utils.getString(32102), utils.getString(32201))
 
-    # Print the Information text
-    self.addControl(xbmcgui.ControlLabel(x=100, y=(100+screeny/2+ 50), width=screenx, height=25, label=utils.getString(32704), textColor='0xFFFFFFFF'))
-    self.addControl(xbmcgui.ControlLabel(x=100, y=(100+screeny/2+100), width=screenx, height=25, label=authorize_url, textColor='0xFFFFFFFF'))
-    self.addControl(xbmcgui.ControlLabel(x=100, y=(100+screeny/2+150), width=screenx, height=25, label=utils.getString(32705), textColor='0xFFFFFFFF'))
+    # Print the Information text blow the QR code
+    self.addControl(xbmcgui.ControlLabel(x=100, y=(100+res_qr_code[1]+ 50), width=screenx, height=25, label=utils.getString(32704), textColor='0xFFFFFFFF'))
+    self.addControl(xbmcgui.ControlLabel(x=100, y=(100+res_qr_code[1]+100), width=screenx, height=25, label=authorize_url, textColor='0xFFFFFFFF'))
+    self.addControl(xbmcgui.ControlLabel(x=100, y=(100+res_qr_code[1]+150), width=screenx, height=25, label=utils.getString(32705), textColor='0xFFFFFFFF'))
 
     # this shows the window on the screen
     self.show()
 
   def onAction(self, action):
-    # the window will be closed with the PREVIOUS-key (e.g. ESC)
-    if action == ACTION_PREVIOUS_MENU:
-        self.close()
+    # the window will be closed with any key
+    self.close()
 
 
 utils.log('Starting Dropbox authentification with key %s and secret %s' % (DROPBOX_APP_KEY, DROPBOX_APP_SECRET), xbmc.LOGDEBUG)
@@ -100,6 +99,11 @@ del mydisplay
 dialog = xbmcgui.Dialog()
 code = dialog.input(utils.getString(32703), type=xbmcgui.INPUT_ALPHANUM).strip()
 
+if code == '':
+    # empty code, aborted
+    utils.log('Entered an empty authorization code. Abort.', xbmc.LOGDEBUG)
+    sys.exit(0);
+    
 # finish authentification by sending the code to dropbox
 try:
     token, user_id = flow.finish(code)

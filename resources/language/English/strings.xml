@@ -12,8 +12,7 @@
     <!-- Info messages -->
     <string id="32703">Dropbox authorization Code</string>
     <string id="32704">Open the following URL by scanning the QR-Code or by typing it manually</string>
-    <string id="32705">Press BACK to close the QR-Code and continue to enter your the authorization code</string>
+    <string id="32705">Press any key to close the QR-Code and continue to enter your the authorization code</string>
     <string id="32706">Unable to authorize with Dropbox</string>
     <string id="32707">Dropbox successfully authorized</string>
 </strings>
-

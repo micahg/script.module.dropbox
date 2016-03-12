@@ -12,7 +12,7 @@
     <!-- Info messages -->
     <string id="32703">Dropbox Bestätigungscode</string>
     <string id="32704">Öffnen Sie die folgende URL durch Scannen des QR-Codes oder abtippen</string>
-    <string id="32705">Drücken Sie ZURÜCK zum Schließen dieses Fensters und anschließender Eingabe des Bestätigungscodes</string>
+    <string id="32705">Drücken Sie eine beliebige Taste zum Schließen dieses Fensters und anschließender Eingabe des Bestätigungscodes</string>
     <string id="32706">Autorisierung mit Dropbox nicht möglich</string>
     <string id="32707">Autorisierung mit Dropbox erfolgreich abgeschlossen</string>
 </strings>
