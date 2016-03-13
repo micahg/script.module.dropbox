@@ -73,7 +73,7 @@ class MyClass(xbmcgui.WindowDialog):
         # The PIL module isn't available so we inform the user about it
         utils.showNotification(utils.getString(32102), utils.getString(32201))
 
-    # Print the Information text blow the QR code
+    # Print the Information text below the QR code
     self.addControl(xbmcgui.ControlLabel(x=100, y=(100+res_qr_code[1]+ 50), width=screenx, height=25, label=utils.getString(32704), textColor='0xFFFFFFFF'))
     self.addControl(xbmcgui.ControlLabel(x=100, y=(100+res_qr_code[1]+100), width=screenx, height=25, label=authorize_url, textColor='0xFFFFFFFF'))
     self.addControl(xbmcgui.ControlLabel(x=100, y=(100+res_qr_code[1]+150), width=screenx, height=25, label=utils.getString(32705), textColor='0xFFFFFFFF'))
@@ -112,7 +112,7 @@ except ErrorResponse, e:
     sys.exit(1);
 
 # positive notification
-utils.showNotification(utils.getString(32702), utils.getString(32707))
+utils.showNotification(utils.getString(32103), utils.getString(32707))
 
 # return the token to the calling script. That means writing the token in the pre-defined settings field
 __Addon_Target = xbmcaddon.Addon(ADDON_TARGET_ID)
