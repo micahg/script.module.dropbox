@@ -1,7 +1,7 @@
-[B]Version 2.3.0[/B]
+[B]Version 2.2.1[/B]
 
-- Added Authentification script for other addons
-
+- Fix version numbers
+- Added authentification script for other addons (thanks to SchapplM)
 
 [B]Version 2.2.0[/B]
 
