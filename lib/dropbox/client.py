@@ -1213,7 +1213,7 @@ class ChunkedUploader(object):
         if show_progress == "dpbg":
             dpbg.close()
 
-    def finish(self, path, overwrite=False, parent_rev=None, show_progress="dp"):
+    def finish(self, path, overwrite=False, parent_rev=None):
         """Commits the bytes uploaded by this ChunkedUploader to a file
         in the users dropbox.
 
