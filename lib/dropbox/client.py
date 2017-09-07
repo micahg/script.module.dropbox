@@ -5,6 +5,7 @@ import re
 import os
 import sys
 import urllib
+import xbmcgui
 
 PY3 = sys.version_info[0] == 3
 
@@ -1156,7 +1157,7 @@ class ChunkedUploader(object):
         self.file_obj = file_obj
         self.target_length = length
 
-    def upload_chunked(self, chunk_size = 4 * 1024 * 1024):
+    def upload_chunked(self, chunk_size = 4 * 1024 * 1024, show_progress=None):
         """Uploads data from this ChunkedUploader's file_obj in chunks, until
         an error occurs. Throws an exception when an error occurs, and can
         be called again to resume the upload.
@@ -1164,9 +1165,26 @@ class ChunkedUploader(object):
         Parameters
             chunk_size
               The number of bytes to put in each chunk. (Default 4 MB.)
+            show_progress
+              Display an upload progress dialog or notification. 
+              Options are:
+                "dp" which displays a Dialog.Progress() 
+                "dpbg" which displays a Dialog.ProgressBG()
+                (Default is no progress shown)
         """
-
+        if show_progress == "dp":
+            dp = xbmcgui.DialogProgress()
+            dp.create("Dropbox", "Uploading File To Dropbox")
+        if show_progress == "dpbg":
+            dpbg = xbmcgui.DialogProgressBG()
+            dpbg.create("Dropbox", "Uploading File To Dropbox")
+        totalChunks = self.target_length / chunk_size
+        stage = 100 / totalChunks
+        percent = 0
         while self.offset < self.target_length:
+            percent += stage
+            # percent = self.offset / self.target_length * 100
+            print ("####  PERCENT = %s" % percent)
             next_chunk_size = min(chunk_size, self.target_length - self.offset)
             if self.last_block == None:
                 self.last_block = self.file_obj.read(next_chunk_size)
@@ -1175,6 +1193,10 @@ class ChunkedUploader(object):
                 (self.offset, self.upload_id) = self.client.upload_chunk(
                     StringIO(self.last_block), next_chunk_size, self.offset, self.upload_id)
                 self.last_block = None
+                if show_progress == "dp":
+                    dp.update(percent)
+                if show_progress == "dpbg":
+                    dpbg.update(percent)
             except ErrorResponse as e:
                 # Handle the case where the server tells us our offset is wrong.
                 must_reraise = True
@@ -1186,8 +1208,12 @@ class ChunkedUploader(object):
                         must_reraise = False
                 if must_reraise:
                     raise
+        if show_progress == "dp":
+            dp.close()
+        if show_progress == "dpbg":
+            dpbg.close()
 
-    def finish(self, path, overwrite=False, parent_rev=None):
+    def finish(self, path, overwrite=False, parent_rev=None, show_progress="dp"):
         """Commits the bytes uploaded by this ChunkedUploader to a file
         in the users dropbox.
 
