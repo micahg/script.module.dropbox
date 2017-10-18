@@ -1,3 +1,7 @@
+[B]Version 8.4.0[/B]
+
+- Update to API version 8.4.0
+
 [B]Version 2.2.2[/B]
 
 - Fix utf8_params in rest API (affected android only)
