@@ -5,7 +5,7 @@
        provider-name="micah">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
-    <import addon="script.module.requests" version="2.3.0"/>
+    <import addon="script.module.requests" version="2.12.4"/>
     <import addon="script.module.qrcode" version="5.2"/> <!-- For QR Code display for Dropbox API authentication -->    
   </requires>
   <extension point="xbmc.python.library" library="authenticate.py"> <!-- entry to start the authentification script from the settings dialog of other addons -->

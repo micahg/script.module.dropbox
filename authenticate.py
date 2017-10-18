@@ -7,8 +7,8 @@
 
 import xbmc, xbmcgui, xbmcaddon, xbmcvfs
 import os, sys
-from lib.dropbox.client import DropboxClient, DropboxOAuth2FlowNoRedirect
-from lib.dropbox.rest import ErrorResponse
+from dropbox.exceptions import AuthError
+from dropbox import DropboxOAuth2FlowNoRedirect
 
 # PIL needed for QR code generation (source code from qr-code.py from service.linuxwhatelse.notify)
 '''
@@ -106,8 +106,8 @@ if code == '':
     
 # finish authentification by sending the code to dropbox
 try:
-    token, user_id = flow.finish(code)
-except ErrorResponse, e:
+    token = flow.finish(code).access_token
+except Exception, e:
     dialog.ok(utils.getString(32103), utils.getString(32706), str(e))
     sys.exit(1);
 
