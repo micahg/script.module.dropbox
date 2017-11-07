@@ -882,7 +882,8 @@ def _make_stone_friendly(
     """
     if isinstance(data_type, bv.Timestamp):
         try:
-            ret = datetime.datetime.strptime(val, data_type.format)
+            # modified for kodi's issues with datetime
+            ret = datetime.datetime(*(time.strptime(val, data_type.format)[0:6]))
         except (TypeError, ValueError) as e:
             raise bv.ValidationError(e.args[0])
     elif isinstance(data_type, bv.Bytes):
