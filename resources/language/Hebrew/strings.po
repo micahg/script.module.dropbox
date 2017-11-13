@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<strings>
+    <!-- Notification headers -->
+    <string id="32101">Dropbox</string>
+    <string id="32102">Dropbox: שגיאה</string>
+    <string id="32103">Dropbox: הגדרות</string>
+
+    <!-- Error messages-->
+    <string id="32201">Python Image Library for QR code לא זמין</string>
+    <string id="32202">משתני קלט שגויים</string>
+
+    <!-- Info messages -->
+    <string id="32703">קוד אימות Dropbox</string>
+    <string id="32704">פתח את כתובת האתר הבאה על ידי סריקת QR-Code או על ידי הקלדת אותו ידנית</string>
+    <string id="32705">לחץ על מקש כלשהו כדי לסגור את QR-Code והמשך להזין את קוד ההרשאה שלך</string>
+    <string id="32706">לא ניתן לאשר עם Dropbox</string>
+    <string id="32707">Dropbox מאושר בהצלחה</string>
+</strings>
