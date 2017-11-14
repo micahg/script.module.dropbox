@@ -1,0 +1,45 @@
+# XBMC Media Center language file
+# Addon Name: Dropbox
+# Addon id: script.module.dropbox
+# Addon version: 8.4.0
+# Addon Provider: Micah
+
+msgctxt "#32101"
+msgid "Dropbox"
+msgstr ""
+
+msgctxt "#32102"
+msgid "Dropbox: Error"
+msgstr ""
+
+msgctxt "#32103"
+msgid "Dropbox: Setup"
+msgstr ""
+
+#Error messages
+msgctxt "#32201"
+msgid "Python Image Library for QR code not available"
+msgstr ""
+msgctxt "#32202"
+msgid "Wrong input arguments"msgstr ""
+
+#Info messages
+msgctxt "#32703"
+msgid "Dropbox authorization Code"
+msgstr ""
+
+msgctxt "#32704"
+msgid "Open the following URL by scanning the QR-Code or by typing it manually"
+msgstr ""
+
+msgctxt "#32705"
+msgid "Press any key to close the QR-Code and continue to enter your the authorization code"
+msgstr ""
+
+msgctxt "#32706"
+msgid "Unable to authorize with Dropbox"
+msgstr ""
+
+msgctxt "#32707"
+msgid "Dropbox successfully authorized"
+msgstr ""
