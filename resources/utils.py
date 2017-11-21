@@ -30,7 +30,7 @@ def encode(string):
 def decode(string):
     return string.decode('UTF-8') 
 
-def log(message,loglevel=xbmc.LOGNOTICE):
+def log(message,loglevel=xbmc.LOGDEBUG):
     """"save message to kodi.log.
     
     Args:

@@ -1,6 +1,8 @@
 [B]Version 8.4.0[/B]
 
 - Update to API version 8.4.0
+- Switch strings to po format
+- Add Hebrew (github.com/Eng2Heb)
 
 [B]Version 2.2.2[/B]
 
