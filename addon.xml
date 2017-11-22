@@ -24,5 +24,9 @@
     <website></website>
     <source>http://python-requests.org</source>
     <email>micahgalizia AT gmail.com</email>
+    <news>v8.4.0 (2017-11-21)
+- Update to API version 8.4.0
+- Switch strings to po format
+- Add Hebrew (github.com/Eng2Heb)</news>
   </extension>
 </addon>
