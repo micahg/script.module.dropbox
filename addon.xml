@@ -2,7 +2,7 @@
 <addon id="script.module.dropbox"
        name="Dropbox API"
        version="8.4.2"
-       provider-name="micah">
+       provider-name="Dropbox">
   <requires>
     <import addon="xbmc.python" version="2.25.0"/>
     <import addon="script.module.requests" version="2.18.4"/>
@@ -12,16 +12,14 @@
   <extension point="xbmc.python.library" library="authenticate.py" /> <!-- entry to start the authentification script from the settings dialog of other addons -->
   <extension point="xbmc.python.module" library="lib" /> <!-- entry to import this in other addons -->
   <extension point="xbmc.addon.metadata">
-    <summary lang="en">Dropbox API</summary>        
-    <description lang="en">Provide Dropbox Python API support</description>
+    <summary lang="en_GB">Dropbox API</summary>
+    <description lang="en_GB">Provide Dropbox Python API support</description>
     <description lang="he">התוסף מספק תמיכה ב-API Python Dropbox</description>
-    <disclaimer lang="en"></disclaimer>     
     <platform>all</platform>
     <language/>
     <license>Apache2</license>
-    <forum></forum>
-    <website></website>
-    <source>https://www.dropbox.com/developers/documentation/python</source>
+    <website>https://www.dropbox.com/developers/documentation/python<</website>
+    <source>https://github.com/dropbox/dropbox-sdk-python</source>
     <email>micahgalizia AT gmail.com</email>
     <news>
 v8.4.2 (2019-08-23)
