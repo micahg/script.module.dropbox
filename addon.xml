@@ -18,7 +18,7 @@
     <platform>all</platform>
     <language/>
     <license>Apache2</license>
-    <website>https://www.dropbox.com/developers/documentation/python<</website>
+    <website>https://www.dropbox.com/developers/documentation/python</website>
     <source>https://github.com/dropbox/dropbox-sdk-python</source>
     <email>micahgalizia AT gmail.com</email>
     <news>
