@@ -1,4 +1,4 @@
-from . import pkg_resources
+import pkg_resources
 import os
 import ssl
 
@@ -28,6 +28,9 @@ API_HOST = os.environ.get('DROPBOX_API_HOST', HOST_API + API_DOMAIN)
 API_CONTENT_HOST = os.environ.get('DROPBOX_API_CONTENT_HOST', HOST_CONTENT + API_DOMAIN)
 API_NOTIFICATION_HOST = os.environ.get('DROPBOX_API_NOTIFY_HOST', HOST_NOTIFY + API_DOMAIN)
 WEB_HOST = os.environ.get('DROPBOX_WEB_HOST', HOST_WWW + WEB_DOMAIN)
+
+# This is the default longest time we'll block on receiving data from the server
+DEFAULT_TIMEOUT = 100
 
 _TRUSTED_CERT_FILE = pkg_resources.resource_filename(__name__, 'trusted-certs.crt')
 
